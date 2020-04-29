@@ -3,12 +3,28 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker ps'
+                dir ('TDD-Java-Course'){
+                    sh 'mvn clean compile'
+                }
             }
         }
-        stage('Deploy') {
+        stage('Test') {
             steps {
-                echo 'Deploying....'
+                dir ('TDD-Java-Course'){
+                    sh 'mvn test'
+                }
+            }
+        }
+        stage('Sonar') {
+            steps {
+                dir ('TDD-Java-Course'){
+                    sh 'mvn sonar:sonar \
+                        -Dsonar.projectKey=TDD-Java_sonar \
+                        -Dsonar.projectName=TDD-Java_sonar \
+                        -Dsonar.sources=src/main \
+                        -Dsonar.host.url=http://3acaab6f692b:9000 \
+                        -Dsonar.login=f95563719b88491ca95b901413d99af5da1dc779'
+                }
             }
         }
     }
