@@ -7,11 +7,12 @@ pipeline {
         stage('Build') {
             steps {
                 dir ('TDD-Java-Course'){
-                    sh 'mvn clean compile'
+                    //sh 'mvn clean compile'
+                    sh 'liquibase --version'
                 }
             }
         }
-        stage('Sonar') {
+        /*stage('Sonar') {
             steps {
                 dir ('TDD-Java-Course'){
                     sh 'mvn test jacoco:report'
@@ -23,6 +24,6 @@ pipeline {
                         -Dsonar.login=c938a723f27187af49ed5dfb0aafcad0719e0edb'
                 }
             }
-        }
+        }*/
     }
 }
