@@ -7,12 +7,18 @@ pipeline {
         stage('Build') {
             steps {
                 dir ('TDD-Java-Course'){
-                    //sh 'mvn clean compile'
-                    sh '/usr/local/bin/liquibase/liquibase --version'
+                    sh 'mvn clean compile'
                 }
             }
         }
-        /*stage('Sonar') {
+        stage('Db') {
+            steps {
+                dir ('liquibase'){
+                    sh '/usr/local/bin/liquibase/liquibase --changeLogFile="changesets/db.changelog-master.xml" update'
+                }
+            }
+        }
+        stage('Sonar') {
             steps {
                 dir ('TDD-Java-Course'){
                     sh 'mvn test jacoco:report'
@@ -24,6 +30,6 @@ pipeline {
                         -Dsonar.login=c938a723f27187af49ed5dfb0aafcad0719e0edb'
                 }
             }
-        }*/
+        }
     }
 }
