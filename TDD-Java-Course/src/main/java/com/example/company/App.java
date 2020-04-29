@@ -1,5 +1,6 @@
 package com.example.company;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,15 +16,22 @@ public class App
         System.out.println( "Hello World!" );
     }
 
-	public static List<String> fizzBuzz(int num) throws Exception {
-
-        if(num < 0) {
-            throw new Exception("Error");
+	public static List<String> fizzbuzz(int finalNumber) throws Exception {
+        
+        List<String> result = new ArrayList<>();
+        if(finalNumber == 0){
+            return result;
         }
-		return IntStream.rangeClosed(1, num)
-                .mapToObj(i -> i % 5 == 0 ? (i % 7 == 0 ? "FizzBuzz" : "Fizz") : (i % 7 == 0 ? "Buzz" : i+""))
-                .collect(Collectors.toList());
-	}
 
-    
+        if(finalNumber < 0) {
+            throw new Exception("Fallo");
+        }
+
+        result.addAll(IntStream.rangeClosed(1, finalNumber)
+                .mapToObj(i -> i % 5 == 0 ? (i % 3 == 0 ? "FizzBuzz" : "Buzz") : (i % 3 == 0 ? "Fizz" : i+""))
+                .collect(Collectors.toList()));
+                
+        return result;
+        
+	}
 }
