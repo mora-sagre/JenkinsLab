@@ -7,13 +7,14 @@ pipeline {
         stage('Build') {
             steps {
                 dir ('TDD-Java-Course'){
-                    sh 'mvn clean test'
+                    sh 'mvn clean compile'
                 }
             }
         }
         stage('Sonar') {
             steps {
                 dir ('TDD-Java-Course'){
+                    sh 'mvn test jacoco:report'
                     sh 'mvn sonar:sonar \
                         -Dsonar.projectKey=TDD-Java_sonar \
                         -Dsonar.projectName=TDD-Java_sonar \
