@@ -25,7 +25,7 @@ pipeline {
                         -Dsonar.projectKey=TDD-Java_sonar \
                         -Dsonar.projectName=TDD-Java_sonar \
                         -Dsonar.sources=src/main \
-                        -Dsonar.host.url=http://3acaab6f692b:9000 \
+                        -Dsonar.host.url=http://192.168.1.133:9000 \
                         -Dsonar.login=f95563719b88491ca95b901413d99af5da1dc779'
                 }
             }
