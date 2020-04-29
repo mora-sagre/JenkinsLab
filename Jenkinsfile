@@ -7,14 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir ('TDD-Java-Course'){
-                    sh 'mvn clean compile'
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                dir ('TDD-Java-Course'){
-                    sh 'mvn test'
+                    sh 'mvn clean test'
                 }
             }
         }
