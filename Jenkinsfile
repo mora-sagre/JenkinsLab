@@ -8,7 +8,7 @@ pipeline {
             steps {
                 dir ('TDD-Java-Course'){
                     //sh 'mvn clean compile'
-                    sh '/usr/local/bin/liquibase --version'
+                    sh '/usr/local/bin/liquibase/liquibase --version'
                 }
             }
         }
